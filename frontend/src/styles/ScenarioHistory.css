@@ -1,0 +1,185 @@
+.tile-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .bar {
+    width: 80%;
+    height: 6px;
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  .pass-bar {
+    background-color: #3bbf59; /* Green for pass% */
+    height: 100%;
+  }
+  
+  .fail-bar {
+    background-color: #fc3246; /* Red for fail% */
+    height: 100%;
+  }
+  
+
+
+  .history-grid-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .history-box {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bar {
+    width: 100%;
+    height: 10px;
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  
+  .pass-bar {
+    background-color: #3bbf59; /* Green for pass% */
+    height: 100%;
+  }
+  
+  .fail-bar {
+    background-color: #fc3246; /* Red for fail% */
+    height: 100%;
+  }
+  
+  .date-label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .percentage-label {
+    font-size: 10px;
+    color: #333;
+  }
+  .scenario-container {
+    /* max-width: 600px; */
+    width: 94%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-family: Arial, sans-serif;
+  }
+  
+  .scenario-container h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+  }
+  
+  .scenario-container p {
+    font-size: 14px;
+    color: #555;
+    margin: 8px 0;
+  }
+  
+  .scenario-container strong {
+    color: #222;
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .status-failed {
+    background-color: #fc3246;
+  }
+  
+  .status-passed {
+    background-color: #3bbf59;
+  }
+  
+  .status-pending {
+    background-color: #f9a825;
+  }
+  
+  /* Scenario Page Styles */
+.search-container {
+    display: flex;
+    justify-content: left;
+    margin: 20px 20px;
+}
+
+.search-input {
+    padding: 8px;
+    width: 250px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.scenario-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* width: 80%; */
+    margin: 20px auto;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-passed {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-failed {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-pending {
+    background-color: #ffc107;
+    color: black;
+}

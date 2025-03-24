@@ -1,0 +1,83 @@
+.comparison-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px auto;
+}
+
+.feature-name {
+    font-weight: bold;
+    font-size: 16px;
+    width: 30%;
+    text-align: center;
+}
+
+.comparison-box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.feature-side-left {
+    justify-content: left;
+    align-self:self-start;
+}
+.feature-side-right {
+    justify-content: right;
+    align-self: self-end;
+}
+
+.feature-side h4 {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* 🔹 Highlight the better pass% in GREEN */
+.highlight-green {
+    background-color: rgba(0, 255, 0, 0.2); /* Light green */
+    color: #008000;
+    font-weight: bold;
+}
+
+/* 🔹 Highlight the worse fail% in RED */
+.highlight-red {
+    background-color: rgba(255, 0, 0, 0.2); /* Light red */
+    color: #ff0000;
+    font-weight: bold;
+}
+
+
+.comparison-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.left {
+    flex: 1;
+    padding-right: 15px;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+}
+
+.left p {
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
