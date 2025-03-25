@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/FeaturePage.css";
 
 
-const FeaturePage = ({selectedDate,setSelectedDate}) => {
+const FeaturePage = ({selectedDate,setSelectedDate,teamName:team}) => {
     const [features, setFeatures] = useState([]);
     const [expandedFeature, setExpandedFeature] = useState(null);
     // const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split("T")[0]);
@@ -17,16 +17,16 @@ const FeaturePage = ({selectedDate,setSelectedDate}) => {
     useEffect(() => {
         const loadFeatures = async () => {
             try {
-                const data = await fetchFeaturesWithScenariosByDate(selectedDate);
+                const data = await fetchFeaturesWithScenariosByDate(selectedDate,team);
                 setFeatures(Array.isArray(data) ? data : []); // Ensure data is an array
-                console.log(data);
+                // console.log(data);
             } catch (error) {
                 console.error("Error fetching features:", error);
                 setFeatures([]); // Fallback to empty array on error
             }
         };
         loadFeatures();
-    }, [selectedDate]);
+    }, [selectedDate,team]);
 
     const toggleFeature = (fid) => {
         setExpandedFeature(expandedFeature === fid ? null : fid);

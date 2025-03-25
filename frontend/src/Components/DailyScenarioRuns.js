@@ -6,24 +6,24 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const DailyScenarioRuns = () => {
+const DailyScenarioRuns = ({teamName}) => {
     const [chartData, setChartData] = useState(null);
 
     useEffect(() => {
         const loadData = async () => {
             try {
-                const data = await fetchDailyRuns();
-                
+                const data = await fetchDailyRuns(teamName);
+                console.log(data);
                 // Extract labels (dates) and values (pass/fail counts)
                 const labels = data.map(entry => entry.run_date);
                 // Calculate total runs per day and percentages
                 const passPercent = data.map(entry => {
                     const total = Number(entry.pass_count) + Number(entry.fail_count);
-                    return total > 0 ? ((Number(entry.pass_count) / total) * 100).toFixed(2) : 0;
+                    return total > 0 ? ((Number(entry.pass_count) / total) * 100).toFixed(1) : 0;
                 });
                 const failPercent = data.map(entry => {
                     const total = Number(entry.pass_count) + Number(entry.fail_count);
-                    return total > 0 ? ((Number(entry.fail_count) / total) * 100).toFixed(2) : 0;
+                    return total > 0 ? ((Number(entry.fail_count) / total) * 100).toFixed(1) : 0;
                 });
 
 
@@ -34,12 +34,16 @@ const DailyScenarioRuns = () => {
                         {
                             label: "Pass %",
                             data: passPercent,
-                            backgroundColor: "#3bbf59",
+                            backgroundColor: "rgba(32, 180, 27, 0.8)",
+                            borderRadius: { topLeft:5, topRight:5, bottomLeft: 0, bottomRight: 0 }, // Smooth edges
+                            borderSkipped: false, // Ensures all edges are rounded
                         },
                         {
                             label: "Fail %",
                             data: failPercent,
-                            backgroundColor: "#fc3246",
+                            backgroundColor: "rgb(255, 87, 87)",
+                            borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, // Smooth edges
+                            borderSkipped: false, // Ensures all edges are rounded
                         }
                     ]
                 });
@@ -49,7 +53,7 @@ const DailyScenarioRuns = () => {
         };
 
         loadData();
-    }, []);
+    }, [teamName]);
 
     const options = {
         responsive: true,

@@ -26,16 +26,16 @@ export const fetchFeaturesByDate = async (date) => {
   }
 };
 
-// Fetch scenarios by date
-export const fetchScenariosByDate = async (date) => {
+// Fetch scenarios by date and team
+export const fetchScenariosByDate = async (date, team = "Default") => {
   try {
     const response = await axios.get(`${API_BASE_URL}/scenarios/date`, {
-      params: { date },
+      params: { date, team }, // Added team parameter
     });
     return response;
   } catch (error) {
     console.error("Error fetching scenarios by date:", error);
-    return [];
+    return { data: [] }; // Return an empty data array to avoid errors
   }
 };
 
@@ -83,20 +83,24 @@ export const fetchFeatureComparison = async (team, version, environment) => {
 };
 
 
-export const fetchDailyRuns = async () => {
+export const fetchDailyRuns = async (teamName = "Default") => {
   try {
-      const response = await fetch("http://localhost:5000/api/scenarios/daily-runs");
-      return await response.json();
+    const response = await axios.post("http://localhost:5000/api/features/daily-runs", { 
+      team: teamName 
+    });
+
+    return response.data;
   } catch (error) {
-      console.error("Error fetching daily runs:", error);
-      return [];
+    console.error("Error fetching daily runs:", error);
+    return [];
   }
 };
 
 
-export const fetchFeaturesWithScenariosByDate = async (date) => {
+
+export const fetchFeaturesWithScenariosByDate = async (date, teamName = "Default") => {
   try {
-      const response = await axios.get(`${API_BASE_URL}/features/with-scenarios?date=${date}`);
+      const response = await axios.post(`${API_BASE_URL}/features/with-scenarios`, { date, teamName });
       return response.data;
   } catch (error) {
       console.error("Error fetching features by date:", error);

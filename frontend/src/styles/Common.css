@@ -1,4 +1,7 @@
-
+/************************************* Commons ****************************************/
+.green{
+    background-color: rgba(32, 180, 27, 0.8);
+}
 
 /************************************** for selection component *******************************/
 
@@ -63,4 +66,28 @@
     align-items: center; /* Aligns the button in the middle */
     margin-top: 20px; /* Adds spacing from the top */
     width: 100%; /* Ensures it takes full width */
+}
+
+
+
+/****************************** Dashboard Page css ************************************/
+
+.teamName{
+    background-color: white;
+    width: 100px;
+    border: 0.5px solid black;
+    border-radius: 2px;
+    height: 21px;
+    margin: auto 20px;
+}
+
+.teamNameSelected{
+    width: 100px;
+    border: 0.5px solid black;
+    border-radius: 2px;
+    height: 21px;
+    margin: auto 20px;
+    background-color: rgba(13, 13, 13, 0.8);
+    font-weight: bolder;
+    color: white;
 }
