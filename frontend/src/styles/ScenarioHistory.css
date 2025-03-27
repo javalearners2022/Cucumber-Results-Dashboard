@@ -141,7 +141,7 @@
 }
 
 .search-button {
-    background-color: #007bff;
+    background-color: rgba(43, 43, 43, 0.8);
     color: white;
     border: none;
     padding: 8px 15px;
@@ -151,7 +151,7 @@
 }
 
 .search-button:hover {
-    background-color: #0056b3;
+    background-color: rgba(13, 13, 13, 0.8);
 }
 
 .scenario-container {
@@ -182,4 +182,15 @@
 .status-pending {
     background-color: #ffc107;
     color: black;
+}
+
+/* Default (no background change) */
+.dull-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(18, 18, 18, 0.7); /* Dull black with slight transparency */
+  /* z-index: 1000; Ensure it's above other content */
 }

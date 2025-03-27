@@ -91,3 +91,8 @@
     font-weight: bolder;
     color: white;
 }
+
+.default-bg-color{
+    background-color: rgba(13, 13, 13, 0.8);
+}
+

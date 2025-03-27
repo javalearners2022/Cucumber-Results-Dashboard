@@ -117,3 +117,16 @@ export const fetchScenarioDetails = async (testId) => {
       return null; // Return null to handle errors gracefully
   }
 };
+
+
+export const fetchErrorDetails = async (testId, date) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/scenarios/errors`, {
+      params: { testId, date },
+    });
+    return response;
+  } catch (error) {
+    console.error("Error fetching error details:", error);
+    throw error;
+  }
+};

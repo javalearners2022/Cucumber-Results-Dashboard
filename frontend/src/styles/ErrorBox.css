@@ -1,0 +1,115 @@
+/* Main error box container */
+.error-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .center{
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Scrollable content inside the error box */
+  .error-content {
+    max-height: 400px; /* Prevent content from overflowing */
+    overflow-y: auto; /* Scroll when needed */
+    /* padding: 10px; */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+  }
+  
+  /* Error message styling (large text handling) */
+  .error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap; /* Ensures text wraps properly */
+    word-wrap: break-word; /* Break long words if necessary */
+    max-height: 250px; /* Prevent message from taking too much space */
+    overflow-y: auto; /* Allow scrolling inside the error message */
+    font-family: monospace;
+    font-size: 14px;
+    border: 1px solid #f5c6cb;
+  }
+  
+  /* Navigation buttons */
+  .error-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .error-navigation button {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 0.5px solid black;
+  }
+  
+  .error-navigation button:hover {
+    background: rgba(43, 43, 43, 0.8);
+    color: white;
+  }
+  
+  /* Close button */
+  .close-btn {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 0.5px solid black;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+    align-self: center;
+    width: 100px;
+
+  }
+  
+  .close-btn:hover {
+    background: rgba(43, 43, 43, 0.8);
+    color: white;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .error-box {
+      width: 90%;
+      max-width: none;
+    }
+  }
+  
+
+
+  /* Cross Button */
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .close-icon:hover {
+    color: red;
+  }

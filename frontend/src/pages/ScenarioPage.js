@@ -60,6 +60,7 @@ const ScenarioPage = () => {
             </div>
             <ScenarioHistoryCalendar 
                 history={scenario.history}
+                testId={testId}
             />
 
         </div>

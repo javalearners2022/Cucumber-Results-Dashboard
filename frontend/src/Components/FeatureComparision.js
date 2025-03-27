@@ -75,6 +75,7 @@ const FeatureComparison = ({ featureId, featureData1, featureData2 }) => {
                     <DoughnutChart
                         passed={passPercentage2}
                         failed={failPercentage2}
+                        noDataIconSize={40}
                     />
                 </div>
             </div>

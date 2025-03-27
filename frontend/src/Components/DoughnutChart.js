@@ -2,11 +2,11 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-
+import NoData from "./NoData";
 // Register required chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-const DoughnutChart = ({ passed, failed }) => {
+const DoughnutChart = ({ passed, failed, noDataIconSize=100 }) => {
   const data = {
     labels: ["Passed", "Failed"],
     datasets: [
@@ -30,7 +30,9 @@ const DoughnutChart = ({ passed, failed }) => {
   };
 
   return (
-    <Doughnut data={data} options={options} />
+    <>
+      {passed+failed==0 ? <NoData message={"No Data available"} iconWidth={noDataIconSize}/> : <Doughnut data={data} options={options} />}
+    </>
   );
 };
 

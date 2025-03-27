@@ -51,6 +51,45 @@ router.get("/date", async (req, res) => {
   }
 });
 
+router.get("/errors", async (req, res) => {
+  try {
+    const { testId, date } = req.query;
+
+    if (!testId) {
+      return res.status(400).json({ error: "testId is required" });
+    }
+
+    let query = `
+      SELECT s.scenarioId, s.name AS scenarioName, s.status AS scenarioStatus,
+             st.stepId, st.name AS stepName, st.keyword, 
+             st.status AS stepStatus, st.duration, st.errorMessage, f.timestamp
+      FROM scenarios s
+      JOIN steps st ON s.sid = st.sid
+      JOIN features f ON s.fid = f.fid
+      WHERE s.testId = ?
+    `;
+
+    const params = [testId];
+
+    if (date) {
+      query += ` AND DATE(f.timestamp) = ?`;
+      params.push(date);
+    }
+
+    query += ` AND st.status = 'FAILED'`; // Fetch only failed steps with errors
+
+    const [rows] = await pool.query(query, params);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "No errors found for the given criteria" });
+    }
+
+    res.json(rows);
+  } catch (error) {
+    console.error("Error fetching error details:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 
 router.get("/:testId", async (req, res) => {

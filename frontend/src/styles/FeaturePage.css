@@ -60,9 +60,6 @@
     border-top: 1px solid #ccc;
 }
 
-.scenario-item {
-    
-}
 
 .scenario-item:hover {
     background-color: #ececec;
@@ -85,4 +82,51 @@
     cursor: pointer;
     transition: background 0.3s;
     background-color: rgba(223, 0, 0, 0.1);
+}
+
+/* Filters Section */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin: auto 10px 20px 10px;
+    /* box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); */
+    /* border: 0.5px solid rgb(196, 196, 196); */
+}
+
+/* Input Fields */
+.filters input,
+.filters select {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #797979;
+    background: #ffffff;
+    color: rgb(87, 87, 87);
+    outline: none;
+    transition: 0.3s ease;
+}
+
+/* Input Placeholder Color */
+.filters input::placeholder {
+    color: #aaa;
+}
+
+/* Hover & Focus Effects */
+.filters input:focus,
+.filters select:focus {
+    border-color: #545454;
+    box-shadow: 0 0 5px rgba(56, 56, 56, 0.7);
+}
+
+/* Select Dropdown */
+.filters select {
+    cursor: pointer;
+}
+
+.filters .input-testId{
+    width: 100px;
 }

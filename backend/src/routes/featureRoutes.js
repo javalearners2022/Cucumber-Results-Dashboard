@@ -193,21 +193,25 @@ router.post('/with-scenarios', async (req, res) => {
       teamName = teamName==null ? "Default" : teamName;
       // Query to get the most recent feature entry per featureId for the given date
       const featureQuery = `
-          SELECT f.fid, f.name AS feature_name, f.totalScenarios, f.passedScenarios, f.failedScenarios
-          FROM features f
-          WHERE DATE(f.timestamp) = ?
-          AND f.fid = (
-              SELECT MAX(f2.fid) 
-              FROM features f2 
-              WHERE DATE(f2.timestamp) = DATE(f.timestamp) 
-              AND f2.featureId = f.featureId
-          )
-          ${teamName !== "Default" ? "AND f.team = ?" : ""}
+        WITH RankedFeatures AS (
+        SELECT 
+            f.fid, 
+            f.name AS feature_name, 
+            f.totalScenarios, 
+            f.passedScenarios, 
+            f.failedScenarios,
+            f.featureId,
+            RANK() OVER (PARTITION BY f.featureId ORDER BY f.fid DESC) AS rnk
+        FROM features f
+        WHERE DATE(f.timestamp) = ?
+        ${teamName !== "Default" ? "AND f.team = ?" : ""}
+        )
+        SELECT * FROM RankedFeatures WHERE rnk = 1;
       `;
 
       const params = teamName !== "Default" ? [date, teamName] : [date];
       const [features] = await pool.query(featureQuery, params);
-
+      // console.log(features);
       if (features.length === 0) {
           return res.json([]); // Return empty array if no data found
       }
@@ -246,6 +250,14 @@ router.post('/with-scenarios', async (req, res) => {
           }
       });
 
+      if(teamName!="Default"){
+        console.log("****************************************************************************");
+        console.log(featureMap);
+        console.log(date);
+        console.log("****************************************************************************");
+
+      }
+      
       res.json(Object.values(featureMap)); // Convert mapped features back to an array
   } catch (error) {
       console.error("Error fetching features with scenarios:", error);

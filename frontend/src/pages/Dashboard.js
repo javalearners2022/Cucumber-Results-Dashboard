@@ -36,7 +36,6 @@ const Dashboard = () => {
         <span>
           <TeamButton teamName={teamName} setTeamName={setTeamName}/>
         </span>
-        <>{teamName}</>
       </div>
       
       

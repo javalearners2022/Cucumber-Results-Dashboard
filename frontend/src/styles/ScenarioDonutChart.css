@@ -5,6 +5,7 @@
     gap: 200px;
     padding: 20px;
     flex-wrap: wrap;
+    margin: 25px auto;
   }
   
   .scenario-chart {
