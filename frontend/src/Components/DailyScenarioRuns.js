@@ -27,7 +27,7 @@ const DailyScenarioRuns = ({teamName}) => {
                     const total = Number(entry.pass_count) + Number(entry.fail_count);
                     return total > 0 ? ((Number(entry.fail_count) / total) * 100).toFixed(1) : 0;
                 });
-                if(passPercent.length+failPercent.length==0) setIsDataAvailable(false);
+                if(passPercent.length+failPercent.length===0) setIsDataAvailable(false);
                 else setIsDataAvailable(true);
 
                 // Prepare chart data

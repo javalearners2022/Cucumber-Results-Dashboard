@@ -31,7 +31,7 @@ const DoughnutChart = ({ passed, failed, noDataIconSize=100 }) => {
 
   return (
     <>
-      {passed+failed==0 ? <NoData message={"No Data available"} iconWidth={noDataIconSize}/> : <Doughnut data={data} options={options} />}
+      {passed+failed===0 ? <NoData message={"No Data available"} iconWidth={noDataIconSize}/> : <Doughnut data={data} options={options} />}
     </>
   );
 };

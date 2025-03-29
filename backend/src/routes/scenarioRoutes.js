@@ -62,21 +62,19 @@ router.get("/errors", async (req, res) => {
     let query = `
       SELECT s.scenarioId, s.name AS scenarioName, s.status AS scenarioStatus,
              st.stepId, st.name AS stepName, st.keyword, 
-             st.status AS stepStatus, st.duration, st.errorMessage, f.timestamp
+             st.status AS stepStatus, st.duration, st.errorMessage, s.featureTimestamp as timestamp
       FROM scenarios s
       JOIN steps st ON s.sid = st.sid
-      JOIN features f ON s.fid = f.fid
       WHERE s.testId = ?
     `;
 
     const params = [testId];
 
     if (date) {
-      query += ` AND DATE(f.timestamp) = ?`;
+      query += ` AND DATE(s.featureTimestamp) = ?`;
       params.push(date);
     }
 
-    query += ` AND st.status = 'FAILED'`; // Fetch only failed steps with errors
 
     const [rows] = await pool.query(query, params);
 

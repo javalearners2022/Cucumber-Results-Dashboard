@@ -23,8 +23,12 @@ const ErrorBox = ({ errors, onClose }) => {
         <strong className="center">Error Details</strong>
         <br/>
         <span><strong>Step:</strong> {stepName}</span>
-        
-        <pre className="error-message">{errorMessage.replace(/\\n/g, "\n\n").replace(/\\"/g, '"').replace(/\\\\/g, "\\").replace(/\\\//g,"/")}</pre>
+        <strong>Error: </strong>
+        <pre className="error-message">{
+          errorMessage==="NA"?"TestCase: Passed"
+          :
+          errorMessage.replace(/\\n/g, "\n\n").replace(/\\"/g, '"').replace(/\\\\/g, "\\").replace(/\\\//g,"/")
+        }</pre>
 
         {/* Navigation for multiple errors */}
         <div className="error-navigation">

@@ -16,8 +16,8 @@ const ScenarioDonutChart = ({ date, team }) => {
 
         const passed = scenarios.filter((s) => s.status === "PASSED").length;
         const failed = scenarios.filter((s) => s.status === "FAILED").length;
-        const pass_percentage = (passed+failed)==0 ? 0 : ((passed/(passed+failed))*100).toFixed(2);
-        const fail_percentage = (passed+failed)==0 ? 0 : ((failed/(passed+failed))*100).toFixed(2);
+        const pass_percentage = (passed+failed)===0 ? 0 : ((passed/(passed+failed))*100).toFixed(2);
+        const fail_percentage = (passed+failed)===0 ? 0 : ((failed/(passed+failed))*100).toFixed(2);
         setScenarioData({ pass_percentage, fail_percentage });
       } catch (error) {
         console.error(`Error fetching scenarios for ${targetDate}:`, error);
