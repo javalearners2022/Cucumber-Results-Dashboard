@@ -10,6 +10,7 @@ const ScenarioHistoryCalendar = ({ history, testId }) => {
   const [isErrorBoxOpen, setIsErrorBoxOpen] = useState(false);
 
   useEffect(() => {
+    if(!history) history=[];
     const processedHistory = history.map(({ execution_date, passed, failed }) => ({
       date: execution_date.split("T")[0],
       passed,

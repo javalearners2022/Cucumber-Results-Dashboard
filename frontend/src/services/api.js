@@ -72,7 +72,7 @@ export const fetchEnvironments = async (team, version) => {
 
 export const fetchFeatureComparison = async (team, version, environment) => {
   try {
-      const response = await axios.get(`http://localhost:5000/api/features/unique-features`, {
+      const response = await axios.get(`${API_BASE_URL}/features/unique-features`, {
           params: { team, version, environment }
       });
       return response.data;
@@ -85,7 +85,7 @@ export const fetchFeatureComparison = async (team, version, environment) => {
 
 export const fetchDailyRuns = async (teamName = "Default") => {
   try {
-    const response = await axios.post("http://localhost:5000/api/features/daily-runs", { 
+    const response = await axios.post(`${API_BASE_URL}/features/daily-runs`, { 
       team: teamName 
     });
 
@@ -110,7 +110,7 @@ export const fetchFeaturesWithScenariosByDate = async (date, teamName = "Default
 
 export const fetchScenarioDetails = async (testId) => {
   try {
-      const response = await axios.get(`http://localhost:5000/api/scenarios/${testId}`);
+      const response = await axios.get(`${API_BASE_URL}/scenarios/${testId}`);
       return response.data;
   } catch (error) {
       console.error("Error fetching scenario details:", error);
@@ -128,5 +128,26 @@ export const fetchErrorDetails = async (testId, date) => {
   } catch (error) {
     console.error("Error fetching error details:", error);
     throw error;
+  }
+};
+
+
+export const fetchScenarioExecutions = async (testId, date) => {
+  try {
+      const response = await axios.get(`${API_BASE_URL}/scenarios/step-details/${testId}/${date}`);
+      return response.data; // Array of executions with test steps
+  } catch (error) {
+      console.error("Error fetching scenario executions:", error);
+      return []; // Return empty array if request fails
+  }
+};
+
+export const fetchScenarioHistory = async (testId) => {
+  try {
+      const response = await axios.get(`${API_BASE_URL}/scenarios/history/${testId}`);
+      return response.data; // Array of executions with test steps
+  } catch (error) {
+      console.error("Error fetching scenario history:", error);
+      return []; // Return empty array if request fails
   }
 };

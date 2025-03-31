@@ -33,6 +33,7 @@ const styles = {
   logo: {
     margin: 0,
     fontSize: "1.5rem",
+    color:"white",
   },
   navLinks: {
     listStyle: "none",

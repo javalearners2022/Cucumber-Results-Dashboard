@@ -8,7 +8,7 @@ const ErrorBox = ({ errors, onClose }) => {
 
   // Extracting the current error details
   const {
-    scenarioName,
+    step_index,
     stepName,
     keyword,
     stepStatus,
@@ -22,10 +22,10 @@ const ErrorBox = ({ errors, onClose }) => {
       <div className="error-content">
         <strong className="center">Error Details</strong>
         <br/>
-        <span><strong>Step:</strong> {stepName}</span>
-        <strong>Error: </strong>
+        <span><strong>{ step_index+1 }&nbsp;</strong><strong>{step_index===0?"Background":"Step"}:&nbsp;</strong><strong>{keyword}</strong> {stepName}</span>
+        <span><strong>Error:</strong> <i>(timestamp={timestamp})</i> </span>
         <pre className="error-message">{
-          errorMessage==="NA"?"TestCase: Passed"
+          errorMessage==="NA"?"Test-Step : Passed"
           :
           errorMessage.replace(/\\n/g, "\n\n").replace(/\\"/g, '"').replace(/\\\\/g, "\\").replace(/\\\//g,"/")
         }</pre>

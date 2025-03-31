@@ -1,0 +1,81 @@
+.step-details-container {
+    max-width: 97%;
+    margin: auto;
+    padding: 20px;
+    /* background: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.execution-card {
+    background: white;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.execution-header {
+    padding: 10px;
+    background: #cacaca;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.execution-header h3 {
+    margin: 0;
+}
+
+.step-list {
+    margin-top: 10px;
+    padding-left: 10px;
+    /* border: 1px solid black; */
+}
+
+.step-item {
+    width: 96%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #f1f1f1;
+    transition: background 0.3s;
+    /* border: 1px solid black; */
+}
+
+
+.step-passed {
+    background: #d4edda !important;
+    color: #155724;
+}
+
+.step-failed {
+    background: #f8d7da !important;
+    color: #721c24;
+}
+
+.step-passed:hover {
+    background: #abebba !important;
+}
+
+.step-failed:hover {
+    background: #ffb8be !important;
+}
+
+/* Trend Analysis Styling */
+.trend-container {
+    width: 95%;
+    margin-top: 5px;
+    padding: 10px;
+    background: white;
+    border-left: 4px solid #909090;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
